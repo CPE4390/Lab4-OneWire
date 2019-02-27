@@ -7,4 +7,4 @@ Requires:
 * Explorer 18 Board
 * Pickit 3
 * PIC18F87J11 Plugin module (PIM)
-* Onewire temperature sensor and/or EEPROM  
+* One of the OneWire temperature sensors and/or EEPROM  
