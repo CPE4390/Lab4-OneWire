@@ -4,20 +4,11 @@
 #include "OneWire.h"
 #include "DS18x20.h"
 
-#if defined __18F8722
-	#pragma config OSC=HSPLL
-	#pragma config WDT=OFF
-	#pragma config LVP=OFF
-	#pragma config XINST=OFF
-#elif defined __18F87J11
 	#pragma config FOSC=HSPLL
 	#pragma config WDTEN=OFF
 	#pragma config XINST=OFF
-#else
-	#error Invalid processor selection
-#endif
 
-char str[17];
+//RJ0 = DQ
 
 void main(void) {
     double t = 0;
@@ -28,10 +19,15 @@ void main(void) {
     OWInit();
     
     while (1) {
+        //Change the lines below depending on the sensor you are using.
+        //Only uncomment one of the lines
         t = ReadDS18S20(NULL);
+        //t = ReadDS18B20(NULL);
+        //t = ReadDS18S20PAR(NULL);
+        //t = ReadDS18B20PAR(NULL);
+        
         LATDbits.LATD0 ^= 1;
-        sprintf(str, "T=%.2f C", t);
-        LCDWriteLine(str, 0);
+        lprintf(0, "T=%.2f C", t);
     }
 }
 
