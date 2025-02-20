@@ -1,4 +1,4 @@
-# Lab5 - OneWire interface
+# Lab4 - OneWire interface
 
 Exploring the Dallas OneWire interface  
 Datasheets can be found in the Datasheets folder  
